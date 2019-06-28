@@ -2,12 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default ({ currentUser, logout }) => {
-  const display = (
-    <div>
-      <Link className="btn" to="/signup">Sign Up</Link>
-      <Link className="btn" to="/login">Log In</Link>
-    </div>
-  );
+  let display;
+  if(currentUser){
+     display = (
+      <div>
+        <p>Hello, {currentUser.name}</p>
+        <button className="btn" onClick={logout}>Log Out</button>
+      </div>
+    );
+  }else{
+     display = (
+      <div>
+        <Link className="btn" to="/signup">Sign Up </Link>
+      </div>
+    )
+  }
 
   return (
     <header className="nav-bar">
